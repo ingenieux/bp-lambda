@@ -3,11 +3,10 @@ package io.ingenieux.sample;
 import com.amazonaws.services.lambda.runtime.Context;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class App {
-    public static void defaultHandler(final InputStream is, final OutputStream os, final Context ctx) throws Exception {
+public class Handlers {
+    public static void rawHandler(final InputStream is, final OutputStream os, final Context ctx) throws Exception {
         File tempFile = File.createTempFile("cmds-", ".sh");
 
         String inputText = asString(is) + "\n";
@@ -63,6 +62,20 @@ public class App {
         runScriptFile(tempFile, baos);
 
         return new String(baos.toByteArray());
+    }
+
+    public static Map<String, String> displayPropertiesHandler() throws Exception {
+        Map<String, String> results = new LinkedHashMap<>();
+
+        Properties p = new Properties();
+
+        p.load(Handlers.class.getClassLoader().getResourceAsStream("default.properties"));
+
+        for (Map.Entry<Object, Object> e : p.entrySet()) {
+            results.put("" + e.getKey(), "" + e.getValue());
+        }
+
+        return results;
     }
 
     private static void runScriptFile(File tempFile, OutputStream os) throws Exception {

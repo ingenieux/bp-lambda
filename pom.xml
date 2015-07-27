@@ -7,7 +7,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <mainClass>io.ingenieux.sample.App</mainClass>
+        <mainClass>io.ingenieux.sample.Handlers</mainClass>
+        <sample.var>Sample Variable</sample.var>
     </properties>
 
     <dependencies>
@@ -19,6 +20,12 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
