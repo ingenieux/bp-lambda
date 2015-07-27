@@ -16,6 +16,12 @@ This project is meant to be cloned and changed to suit your moods, but it includ
 Notice that your code is upload to S3 and then called. As such, you can easily add multiple functions into a single
 file, and simply copy the deploy_function_code lines at the bottom to reflect your extra modules. 
 
+## A Client Stub
+
+If you want a client Stub, there's one at http://plnkr.co/r823d0VTmvD2qDHuwnVj (bootstrap, jQuery, AWS SDK for JavaScript in the Browser, and Amazon Cognito). 
+
+See its README.md file to configure it properly
+
 ## Using on Codeship
 
 In order to use it in your codeship.io projects, then:
@@ -42,3 +48,4 @@ $ bash deploy.sh
     * ```AWS_ACCESS_KEY_ID```
     * ```AWS_SECRET_ACCESS_KEY```
     * ```AWS_DEFAULT_REGION```
+

