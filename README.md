@@ -37,3 +37,8 @@ $ mvn clean package -Pdeploy
 ```
 $ bash deploy.sh
 ```
+
+  * Finally, ensure your environment settings are set, which are:
+    * ```AWS_ACCESS_KEY_ID```
+    * ```AWS_SECRET_ACCESS_KEY```
+    * ```AWS_DEFAULT_REGION```
