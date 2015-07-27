@@ -2,9 +2,20 @@
 
 set -x
 
-ROLE=arn:aws:iam::235368163414:role/lambda_basic_execution
 BUCKET=ingenieux-images
 KEY=/bpservice/bpservice.zip
+ROLE_NAME=lambda_basic_execution
+
+function lookup_role {
+  ROLE=$(aws iam list-roles | jq -r .[][].Arn | grep role/$ROLE_NAME)
+
+  if [ "x" == "x$ROLE" ]; then
+    echo "Role name not found: $ROLE_NAME"
+    exit 1
+  fi
+}
+
+ROLE=$(lookup_role $ROLE_NAME)
 
 function deploy_function_code {
   FUNCTION_NAME=$1
