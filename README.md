@@ -26,13 +26,13 @@ In order to use it in your codeship.io projects, then:
 $ pip install --upgrade awscli
 $ jdk_switcher use oraclejdk8
 ```
-  * Set the test commands as: 
+  * Set the test commands for the ```master``` branch as: 
 
 ```
 $ mvn clean package -Pdeploy
 ```
 
-  * Use this deployment command: 
+  * Use this as your Custom Script in your deployment pipeline: 
 
 ```
 $ bash deploy.sh
