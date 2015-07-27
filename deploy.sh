@@ -17,5 +17,8 @@ function deploy_function_code {
 
 aws s3 cp target/bpservice.jar s3://$BUCKET/$KEY
 
-deploy_function_code opDefaultHandler io.ingenieux.sample.App::defaultHandler $ROLE
+deploy_function_code bps_opDefaultHandler io.ingenieux.sample.App::defaultHandler $ROLE
+deploy_function_code bps_opArrayHandler io.ingenieux.sample.App::arrayHandler $ROLE
+deploy_function_code bps_opPojoHandler io.ingenieux.sample.App::pojoHandler $ROLE
+
 
