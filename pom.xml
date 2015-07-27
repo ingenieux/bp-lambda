@@ -66,6 +66,17 @@
                                             <mainClass>io.ingenieux.GitUploader</mainClass>
                                         </transformer>
                                     </transformers>
+                                    <filters>
+                                        <!-- see http://stackoverflow.com/questions/17658831/how-can-i-exclude-dsa-and-sf-files-from-shaded-jar -->
+                                        <filter>
+                                            <artifact>*:*:*:*</artifact>
+                                            <excludes>
+                                                <exclude>*.RSA</exclude>
+                                                <exclude>*.DSA</exclude>
+                                                <exclude>*.SF</exclude>
+                                            </excludes>
+                                        </filter>
+                                    </filters>
                                 </configuration>
                             </execution>
                         </executions>
