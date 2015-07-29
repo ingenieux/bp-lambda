@@ -12,6 +12,8 @@ function lookup_role {
   if [ "x" == "x$ROLE" ]; then
     echo "Role name not found: $ROLE_NAME"
     exit 1
+  else
+    echo $ROLE
   fi
 }
 
@@ -32,5 +34,3 @@ deploy_function_code bps_opRawHandler io.ingenieux.sample.Handlers::rawHandler $
 deploy_function_code bps_opArrayHandler io.ingenieux.sample.Handlers::arrayHandler $ROLE
 deploy_function_code bps_opPojoHandler io.ingenieux.sample.Handlers::pojoHandler $ROLE
 deploy_function_code bps_opDisplayProperties io.ingenieux.sample.Handlers::displayPropertiesHandler $ROLE
-
-
