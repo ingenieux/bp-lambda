@@ -3,11 +3,12 @@ package io.ingenieux.sample;
 import com.amazonaws.services.lambda.runtime.Context;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.*;
 
 public class Handlers {
     public static void rawHandler(final InputStream is, final OutputStream os, final Context ctx) throws Exception {
-        File tempFile = File.createTempFile("cmds-", ".sh");
+        File tempFile = Files.createTempFile("cmds-", ".sh");
 
         String inputText = asString(is) + "\n";
 
@@ -21,7 +22,7 @@ public class Handlers {
     }
 
     public static String arrayHandler(List<String> commands, final Context ctx) throws Exception {
-        File tempFile = File.createTempFile("cmds-", ".sh");
+        File tempFile = Files.createTempFile("cmds-", ".sh");
 
         try (PrintWriter pw = new PrintWriter(tempFile)) {
             for (String s : commands) {
@@ -49,7 +50,7 @@ public class Handlers {
     }
 
     public static String pojoHandler(CommandArgs cmdArgs, final Context ctx) throws Exception {
-        File tempFile = File.createTempFile("cmds-", ".sh");
+        File tempFile = Files.createTempFile("cmds-", ".sh");
 
         try (PrintWriter pw = new PrintWriter(tempFile)) {
             for (String s : cmdArgs.getCommands()) {
